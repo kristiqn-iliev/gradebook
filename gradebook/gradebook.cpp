@@ -2,6 +2,7 @@
 #include <soci/odbc/soci-odbc.h>
 #include <iostream>
 #include <string>
+#include "./students_service.hpp"
 
 int main()
 {
