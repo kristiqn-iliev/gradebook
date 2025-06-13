@@ -52,7 +52,7 @@ void insertStudent(const Student& s, const SQLHDBC& hDbc, SQLHSTMT& hStmt) {
         SQL_C_SLONG,             // C type: signed long
         SQL_INTEGER,             // SQL type: INT
         0, 0,
-        (SQLPOINTER)&s.number,   // address of your int
+        (SQLPOINTER)&s.number,   // address of number
         0,
         &ind_num
     );
@@ -61,7 +61,6 @@ void insertStudent(const Student& s, const SQLHDBC& hDbc, SQLHSTMT& hStmt) {
         return;
     }
 
-    // 4b) name → NVARCHAR/VARCHAR
     SQLLEN ind_name = SQL_NTS;
     ret = SQLBindParameter(
         hStmt,
@@ -88,7 +87,7 @@ void insertStudent(const Student& s, const SQLHDBC& hDbc, SQLHSTMT& hStmt) {
         SQL_PARAM_INPUT,
         SQL_C_WCHAR,
         SQL_WVARCHAR,
-        10,                      // “DD/MM/YYYY” is 10 chars
+        11,                      // “DD/MM/YYYY” is 10 chars
         0,
         (SQLPOINTER)s.birthdate.c_str(),
         (SQLLEN)s.birthdate.size(),
@@ -102,7 +101,7 @@ void insertStudent(const Student& s, const SQLHDBC& hDbc, SQLHSTMT& hStmt) {
 
     ret = SQLExecute(hStmt);
     if (!SQL_SUCCEEDED(ret)) {
-        std::cerr << "Executoin has failed!";
+        std::cerr << "Execution has failed!";
         return;
     }
 }
@@ -149,8 +148,8 @@ int main()
 
     Student s;
     s.number = 20;
-    s.name = L"Mitko Petrov";
-    s.birthdate = L"20/04/2002";
+    s.name = L"Ivan Dimitrov";
+    s.birthdate = L"22/08/2002";
 
 
     insertStudent(s, hDbc, hStmt);
