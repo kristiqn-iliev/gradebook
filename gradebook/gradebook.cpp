@@ -16,8 +16,26 @@ struct Student {
     }
 };
 
-void printStudent(const Student& s) {
+//Function to log messages from errors thrown by the database
+void printSQLError(SQLHANDLE handle, SQLSMALLINT handleType) {
+    SQLWCHAR sqlState[6], message[256];
+    SQLINTEGER nativeError;
+    SQLSMALLINT textLength;
+    SQLRETURN ret;
+    int i = 1;
 
+    while ((ret = SQLGetDiagRecW(handleType, handle, i, sqlState, &nativeError, message, sizeof(message) / sizeof(SQLWCHAR), &textLength)) != SQL_NO_DATA) {
+        //std::wcerr << L"ODBC Error " << i 
+        //    << L": " << message << std::endl;
+        std::wcerr << L"ODBC Error " << i << L": State " << sqlState << L", Native error " << nativeError
+            << L": " << message << std::endl;
+        i++;
+
+        
+    }
+}
+
+void printStudent(const Student& s) {
     std::cout << "Class number: ";
     std::cout << s.number << '\n';
     std::cout << "Full name: ";
@@ -101,7 +119,7 @@ void insertStudent(const Student& s, const SQLHDBC& hDbc, SQLHSTMT& hStmt) {
 
     ret = SQLExecute(hStmt);
     if (!SQL_SUCCEEDED(ret)) {
-        std::cerr << "Execution has failed!";
+        printSQLError(hStmt, SQL_HANDLE_STMT);
         return;
     }
 }
@@ -133,7 +151,7 @@ int main()
 
 
     if (!SQL_SUCCEEDED(connectDatabase(hDbc, connStr))) {
-        std::cerr << "Connect failed\n"; cleanUpHandles(hDbc, hEnv); 
+        printSQLError(hDbc, SQL_HANDLE_DBC); cleanUpHandles(hDbc, hEnv);
         return 1;
     }
 
@@ -147,7 +165,7 @@ int main()
     }
 
     Student s;
-    s.number = 20;
+    s.number = 22;
     s.name = L"Ivan Dimitrov";
     s.birthdate = L"22/08/2002";
 
