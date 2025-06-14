@@ -1,5 +1,10 @@
 #pragma once
 
+#include "./students_service.hpp"
+#include "./subjects_service.hpp"
+#include "./grades_service.hpp"
+#include "./reporting_service.hpp"
+
 class App {
 public:
 	App(const std::string& connectString);
@@ -15,6 +20,7 @@ private:
 App::App(const std::string& connectString)
 	: sql_(soci::odbc, connectString)
 {
+	//check if connection is ok
 	std::cout << "------------------------\n";
 	std::cout << "Connected via SOCI-ODBC!\n";
 	std::cout << "------------------------\n";
@@ -50,8 +56,12 @@ void App::printMenu() {
 		<< "33) Edit a grade\n"
 		<< "34) Delete a grade\n\n"
 
-		<< "1) List top students\n"
-		<< "2) Birthday today\n\n"
+		<< "1) Get average grade for student in subject\n"
+		<< "2) Get average grade for student over all subjects\n"
+		<< "3) Display a list for top students (above 5.00)\n"
+		<< "4) Display a list of students who will have to take a remedial exam in a subject\n"
+		<< "5) Display a list of students who have a grade less than 3.00 in three or more subjects\n"
+		<< "6) Display a list of students who have birthday today\n\n"
 
 		<< "0) Quit\n\n"
 		<< "Choose> ";
@@ -331,7 +341,85 @@ void App::handleChoice(int choice) {
 
 			break;
 		}
-			   // … other cases …
+
+		case 1: {
+			int student_id;
+			int subject_id;
+
+			std::cout << "===  AVG GRADE IN SUB  ===\n";
+			std::cout << "Student id: "; std::cin >> student_id;
+			std::cout << "Subject id: "; std::cin >> subject_id;
+
+			try {
+
+				std::cout << "Average grade: " << ReportingService::getAverageGradeForStudentInSubject(student_id, subject_id, sql_) << "\n";
+			}
+			catch (std::exception& e) {
+
+				std::cout << "Average grade: NULL \n";
+			}
+
+			std::cout << "---------------------------\n";
+
+			break;
+		}
+		case 2: {
+			int student_id;
+
+			std::cout << "===  STUDENT AVG GRADE  ===\n";
+			std::cout << "Student id: "; std::cin >> student_id;
+
+			try {
+
+				std::cout << "Average grade: " << ReportingService::getAverageGradeForStudent(student_id, sql_) << "\n";
+			}
+			catch (std::exception& e) {
+
+				std::cout << "Average grade: NULL \n";
+			}
+
+			std::cout << "---------------------------\n";
+
+			break;
+		}
+		case 3: {
+			std::cout << "===    TOP STUDENTS    ===\n";
+
+			ReportingService::listTopStudents(sql_);
+
+			std::cout << "---------------------------\n";
+
+			break;
+		}
+		case 4: {
+			std::cout << "=== STUDENTS FOR REMEDY ===\n";
+
+			ReportingService::listRemedyStudents(sql_);
+
+			std::cout << "---------------------------\n";
+
+			break;
+		}
+		case 5: {
+			std::cout << "=== FAILING STUDENTS AND COUNT ====\n";
+			ReportingService::listFailingStudents(sql_);
+
+			std::cout << "---------------------------\n";
+
+			break;
+		}
+
+		case 6: {
+			std::cout << "=== BIRTHDAY STUDENTS! ===\n";
+
+
+			ReportingService::listBirthdayStudents(sql_);
+
+			std::cout << "---------------------------\n";
+
+			break;
+		}
+			  // … other cases …
 		default:
 			std::cout << "===    UNKOWN CHOICE   ===\n";
 			std::cout << "--------------------------\n";
