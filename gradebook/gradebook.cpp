@@ -1,20 +1,18 @@
 #include <soci/soci.h>
 #include <soci/odbc/soci-odbc.h>
 #include <iostream>
-#include <string>
-#include "./students_service.hpp"
-#include "./subjects_service.hpp"
-#include "./grades_service.hpp"
+
 #include "./application.hpp"
+
 
 int main()
 {
 
 	std::string connectionString = "DRIVER={ODBC Driver 17 for SQL Server};SERVER=DESKTOP-3KAPKMM;DATABASE=TestDB;UID=sa;PWD=sa;";
+
 	try {
 		App app(connectionString);
 		app.run();
-
 	}
 	catch (const soci::soci_error& e) {
 		std::cerr << "Connection failed: " << e.what() << "\n";

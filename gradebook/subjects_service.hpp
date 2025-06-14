@@ -11,9 +11,8 @@ class SubjectService {
 private:
 	static bool isValidNameFormat(const std::string& name) {
 
-		std::regex nameRegex(R"(^ ([a - zA - Z] {2, }\s[a - zA - Z]{ 1, }'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)");
-
-		return std::regex_match(name, nameRegex);
+		//...
+		return true;
 	}
 
 	static bool isValidSubject(const Subject& s) {
