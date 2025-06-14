@@ -1,6 +1,8 @@
 #pragma once
 
-class database_error : public std::runtime_error{
+#include<regex>
+
+class database_error : public std::runtime_error {
 public:
 	database_error(const std::string& msg) : std::runtime_error(msg) {}
 };
@@ -13,6 +15,25 @@ struct Student {
 };
 
 class StudentService {
+private:
+
+	static bool isValidNameFormat(const std::string& name) {
+
+		std::regex nameRegex(R"(^ ([a - zA - Z] {2, }\s[a - zA - Z]{ 1, }'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)");
+
+		return std::regex_match(name, nameRegex);
+	}
+
+	static bool isValidDateFormat(const std::string& date) {
+		std::regex dateRegex(R"(^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$)");
+
+		return std::regex_match(date, dateRegex);
+	}
+
+	static bool isValidStudent(const Student& s) {
+		return  isValidNameFormat(s.name) && isValidDateFormat(s.birthdate) && s.number > 0;
+	}
+
 	StudentService() = delete;
 
 public:
@@ -59,6 +80,8 @@ public:
 
 	static void insert(soci::session& sql, const Student& s) {
 
+		if (!isValidStudent(s)) throw std::runtime_error("Invalid student format!");
+
 		sql << "INSERT INTO students (number, name, birthdate) VALUES (:number, :name, :birthdate)", soci::use(s.number), soci::use(s.name), soci::use(s.birthdate);
 	}
 
@@ -75,12 +98,12 @@ public:
 		if (!stmt.fetch()) {
 			std::string message = "Non-existent student with id " + std::to_string(id) + "!";
 			throw database_error(message);
-		} 
+		}
 
 		return s;
-	}	
+	}
 
-	static void editById(soci::session& sql,int id, const Student& newStudent) {
+	static void editById(soci::session& sql, int id, const Student& newStudent) {
 
 		findById(sql, id);
 
@@ -103,5 +126,5 @@ public:
 		std::cout << "Successfully deleted student " + s.name + "!\n";
 		std::cout << "---------------------------\n";
 	}
-};	
+};
 

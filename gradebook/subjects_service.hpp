@@ -8,6 +8,18 @@ struct Subject {
 };
 
 class SubjectService {
+private:
+	static bool isValidNameFormat(const std::string& name) {
+
+		std::regex nameRegex(R"(^ ([a - zA - Z] {2, }\s[a - zA - Z]{ 1, }'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)");
+
+		return std::regex_match(name, nameRegex);
+	}
+
+	static bool isValidSubject(const Subject& s) {
+		return isValidNameFormat(s.name) && isValidNameFormat(s.teacher);
+	}
+
 	SubjectService() = delete;
 
 public:
@@ -53,6 +65,9 @@ public:
 	}
 
 	static void insert(soci::session& sql, const Subject& s) {
+
+		if (!isValidSubject(s)) throw std::runtime_error("Invalid subject format!");
+
 		sql << "INSERT INTO subjects (number, name, teacher) VALUES (:number, :name, :teacher)", soci::use(s.number), soci::use(s.name), soci::use(s.teacher);
 
 
