@@ -34,6 +34,13 @@ cd vcpkg
 .\bootstrap-vcpkg.bat
 .\vcpkg install soci[odbc]
 ```
+## Setup
+
+1. Run `create_database.sql` to create the database.
+2. Run `init_schemas.sql` to initialize schema.
+3. Run `seed_data.sql` to insert test data.
+4. Update `.env` with your DB credentials.
+
 ### Building the Project (Visual Studio)
 
 1. Open the solution/project in Visual Studio.
