@@ -9,7 +9,7 @@ public:
 
 		sql
 			<< R"(
-				SELECT
+			SELECT
 				CAST(AVG(g.grade) AS DECIMAL(4,2)) AS average_grade
 			FROM grades AS g
 			JOIN students AS stud
