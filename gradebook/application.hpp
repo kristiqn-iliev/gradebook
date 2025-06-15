@@ -20,7 +20,19 @@ private:
 App::App(const std::string& connectString)
 	: sql_(soci::odbc, connectString)
 {
-	//check if connection is ok
+	try {
+		int testValue = 0;
+		sql_ << "SELECT 1", soci::into(testValue);
+
+		std::cout << "------------------------------\n";
+		std::cout << "Connected via SOCI-ODBC!\n";
+		std::cout << "Connection test result: " << testValue << "\n";
+		std::cout << "------------------------------\n";
+	}
+	catch (const soci::soci_error& e) {
+		std::cerr << "[Connection Error] " << e.what() << "\n";
+		throw; 
+	}
 	std::cout << "------------------------\n";
 	std::cout << "Connected via SOCI-ODBC!\n";
 	std::cout << "------------------------\n";

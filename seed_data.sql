@@ -1,5 +1,7 @@
 USE SchoolDB;
 
+select * from students;
+
 INSERT INTO students (number, name, birthdate) VALUES
 (1001, 'Ernesto Hendricks', '03/06/1997'),
 (1002, 'Braxton Anderson', '14/06/2000'),
@@ -1055,7 +1057,9 @@ INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (10, 2, 6.0, '13/08/2024'),
 (10, 2, 5.9, '17/10/2023'),
 (10, 11, 6.0, '19/10/2024'),
-(10, 12, 6.0, '02/12/2024'),
+(10, 12, 6.0, '02/12/2024')
+
+INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (10, 3, 5.8, '13/06/2023'),
 (10, 20, 5.6, '23/08/2024'),
 (10, 13, 6.0, '13/08/2023'),
@@ -2021,7 +2025,9 @@ INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (20, 4, 3.3, '22/04/2024'),
 (20, 18, 5.3, '26/01/2025'),
 (20, 1, 5.3, '15/06/2023'),
-(20, 8, 4.4, '08/12/2023'),
+(20, 8, 4.4, '08/12/2023')
+
+INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (20, 10, 4.3, '20/08/2023'),
 (20, 9, 4.6, '13/01/2025'),
 (20, 4, 4.5, '15/07/2023'),
@@ -2993,7 +2999,9 @@ INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (29, 15, 2.3, '23/01/2025'),
 (29, 1, 2.8, '18/11/2024'),
 (29, 16, 2.4, '03/08/2024'),
-(29, 3, 2.5, '12/07/2023'),
+(29, 3, 2.5, '12/07/2023')
+
+INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (29, 7, 2.7, '12/12/2024'),
 (29, 1, 2.6, '20/04/2025'),
 (29, 9, 2.2, '18/01/2024'),
@@ -3958,7 +3966,9 @@ INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (39, 7, 4.3, '30/03/2024'),
 (39, 17, 4.0, '21/01/2025'),
 (39, 15, 3.5, '14/08/2023'),
-(39, 12, 3.1, '19/11/2023'),
+(39, 12, 3.1, '19/11/2023')
+
+INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (39, 17, 4.4, '02/10/2023'),
 (39, 5, 4.2, '29/03/2025'),
 (39, 12, 4.0, '01/07/2024'),
@@ -4842,7 +4852,9 @@ INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (48, 14, 3.9, '29/11/2024'),
 (48, 14, 2.9, '25/07/2024'),
 (48, 8, 4.9, '10/05/2025'),
-(48, 19, 4.3, '12/04/2024'),
+(48, 19, 4.3, '12/04/2024')
+
+INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (48, 3, 4.2, '22/12/2023'),
 (48, 18, 4.8, '29/06/2023'),
 (48, 1, 4.7, '08/04/2025'),
@@ -5726,7 +5738,9 @@ INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (57, 5, 4.4, '12/10/2023'),
 (57, 16, 5.7, '26/03/2025'),
 (57, 8, 5.5, '14/02/2024'),
-(57, 15, 3.9, '09/10/2023'),
+(57, 15, 3.9, '09/10/2023')
+
+INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (57, 1, 5.2, '29/12/2023'),
 (57, 14, 4.4, '24/11/2024'),
 (57, 17, 4.2, '09/12/2024'),
@@ -6568,7 +6582,9 @@ INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (65, 17, 3.3, '30/06/2024'),
 (65, 5, 4.0, '03/01/2024'),
 (65, 13, 4.5, '25/02/2025'),
-(65, 14, 4.5, '18/06/2024'),
+(65, 14, 4.5, '18/06/2024')
+
+INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (65, 6, 4.1, '04/09/2023'),
 (65, 8, 5.6, '28/11/2023'),
 (65, 20, 5.5, '19/07/2023'),
@@ -7425,7 +7441,9 @@ INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (74, 12, 5.6, '02/01/2025'),
 (74, 10, 4.2, '03/10/2023'),
 (74, 10, 3.9, '06/04/2025'),
-(74, 1, 4.7, '09/10/2023'),
+(74, 1, 4.7, '09/10/2023')
+
+INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (74, 19, 4.9, '10/09/2024'),
 (74, 18, 4.2, '22/01/2025'),
 (74, 9, 4.6, '03/11/2023'),
@@ -8264,7 +8282,9 @@ INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (82, 2, 5.2, '16/08/2023'),
 (82, 10, 4.2, '28/09/2023'),
 (82, 15, 4.8, '05/06/2024'),
-(82, 14, 3.6, '19/01/2024'),
+(82, 14, 3.6, '19/01/2024')
+
+INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (82, 3, 5.7, '25/01/2024'),
 (82, 16, 4.9, '13/08/2023'),
 (82, 11, 5.0, '04/09/2024'),
@@ -9043,7 +9063,9 @@ INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (90, 20, 3.6, '02/01/2024'),
 (90, 20, 5.1, '31/12/2024'),
 (90, 6, 2.9, '14/09/2024'),
-(90, 9, 3.2, '26/05/2025'),
+(90, 9, 3.2, '26/05/2025')
+
+INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (90, 14, 4.1, '31/07/2023'),
 (90, 3, 3.5, '23/11/2023'),
 (90, 13, 5.3, '26/10/2023'),
@@ -9954,7 +9976,9 @@ INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (99, 16, 5.0, '17/09/2024'),
 (99, 1, 3.5, '14/07/2024'),
 (99, 1, 4.0, '11/06/2023'),
-(99, 2, 4.0, '26/08/2023'),
+(99, 2, 4.0, '26/08/2023')
+
+INSERT INTO Grades (student_id, subject_id, grade, date) VALUES
 (99, 2, 4.2, '11/09/2023'),
 (99, 5, 5.1, '05/02/2025'),
 (99, 13, 5.2, '11/02/2025'),

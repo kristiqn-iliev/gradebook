@@ -26,6 +26,10 @@ This is a C++ CLI application for managing a gradebook system with Students, Sub
 
 All dependencies are managed via [vcpkg](https://github.com/microsoft/vcpkg).
 
+### Required Libraries:
+
+- [SOCI](https://github.com/SOCI/soci) (ODBC backend)
+
 ### Install vcpkg and Required Packages
 
 ```bash
