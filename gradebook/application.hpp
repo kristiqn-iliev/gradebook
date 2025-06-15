@@ -1,9 +1,9 @@
 #pragma once
 
-#include "./students_service.hpp"
-#include "./subjects_service.hpp"
-#include "./grades_service.hpp"
-#include "./reporting_service.hpp"
+#include "./services/students_service.hpp"
+#include "./services/subjects_service.hpp"
+#include "./services/grades_service.hpp"
+#include "./services//reporting_service.hpp"
 
 class App {
 public:
