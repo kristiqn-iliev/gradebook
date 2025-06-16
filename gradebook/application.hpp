@@ -26,16 +26,13 @@ App::App(const std::string& connectString)
 
 		std::cout << "------------------------------\n";
 		std::cout << "Connected via SOCI-ODBC!\n";
-		std::cout << "Connection test result: " << testValue << "\n";
-		std::cout << "------------------------------\n";
+		//std::cout << "Connection test result: " << testValue << "\n";
+		std::cout << "------------------------------";
 	}
 	catch (const soci::soci_error& e) {
 		std::cerr << "[Connection Error] " << e.what() << "\n";
 		throw; 
 	}
-	std::cout << "------------------------\n";
-	std::cout << "Connected via SOCI-ODBC!\n";
-	std::cout << "------------------------\n";
 }
 
 int App::run() {

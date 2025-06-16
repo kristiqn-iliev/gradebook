@@ -387,3 +387,5 @@ cmake_install.cmake
 Makefile
 
 /vcpkg
+
+.env
