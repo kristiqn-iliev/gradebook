@@ -55,3 +55,8 @@ cd vcpkg
 
 1. Open the solution/project in Visual Studio.
 2. Build and run.
+
+
+### Note
+- Let the .env file start with a #comment row as in .env.example
+
