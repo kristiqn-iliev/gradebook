@@ -103,7 +103,7 @@ void App::handleChoice(int choice) {
 			std::cout << "--------------------------\n";
 			std::cout << " name : "; std::getline(std::cin, s.name, '\n');
 			std::cout << "--------------------------\n";
-			std::cout << " birthdate : "; std::cin >> s.birthdate;
+			std::cout << " birthdate : ";  std::getline(std::cin, s.birthdate, '\n');
 			std::cout << "--------------------------\n";
 
 			StudentService::insert(sql_, s);
@@ -138,7 +138,7 @@ void App::handleChoice(int choice) {
 			std::cout << "--------------------------\n";
 
 			std::cout << " Current birthdate : "; std::cout << s.birthdate << '\n';
-			std::cout << " birthdate : "; std::cin >> newStudent.birthdate;
+			std::cout << " birthdate : ";  std::getline(std::cin, newStudent.birthdate, '\n');
 			std::cout << "--------------------------\n";
 
 			StudentService::editById(sql_, id, newStudent);
@@ -232,7 +232,7 @@ void App::handleChoice(int choice) {
 			std::cout << "--------------------------\n";
 
 			std::cout << " Current teacher : "; std::cout << s.teacher << '\n';
-			std::cout << " teacher : "; std::cin >> newSubject.teacher;
+			std::cout << " teacher : "; std::getline(std::cin, newSubject.teacher, '\n');
 			std::cout << "--------------------------\n";
 
 			SubjectService::editById(sql_, id, newSubject);
