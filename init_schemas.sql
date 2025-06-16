@@ -10,7 +10,7 @@ CREATE TABLE students (
 CREATE TABLE subjects (
     id INT PRIMARY KEY IDENTITY(1,1),
     number INT NOT NULL,
-    name VARCHAR(100),
+    name VARCHAR(100) UNIQUE NOT NULL,
     teacher VARCHAR(100)
 );
 

@@ -1,6 +1,6 @@
 USE SchoolDB;
 
-select * from students;
+select * from grades;
 
 INSERT INTO students (number, name, birthdate) VALUES
 (1001, 'Ernesto Hendricks', '03/06/1997'),
