@@ -1,13 +1,3 @@
-git clone https://github.com/kristiqn-iliev/gradebook.git
-cd gradebook
-
-
-git clone https://github.com/microsoft/vcpkg.git
-cd vcpkg
-bootstrap-vcpkg.bat
-.\vcpkg install soci[odbc]
-
-
 # Gradebook Console Application
 This is a C++ CLI application for managing a gradebook system with Students, Subjects, and Grades, built using Visual Studio and the SOCI library via ODBC.
 
