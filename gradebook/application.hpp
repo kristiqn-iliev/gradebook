@@ -1,9 +1,9 @@
 #pragma once
 
-#include "./students_service.hpp"
-#include "./subjects_service.hpp"
-#include "./grades_service.hpp"
-#include "./reporting_service.hpp"
+#include "./services/students_service.hpp"
+#include "./services/subjects_service.hpp"
+#include "./services/grades_service.hpp"
+#include "./services//reporting_service.hpp"
 
 class App {
 public:
@@ -20,10 +20,19 @@ private:
 App::App(const std::string& connectString)
 	: sql_(soci::odbc, connectString)
 {
-	//check if connection is ok
-	std::cout << "------------------------\n";
-	std::cout << "Connected via SOCI-ODBC!\n";
-	std::cout << "------------------------\n";
+	try {
+		int testValue = 0;
+		sql_ << "SELECT 1", soci::into(testValue);
+
+		std::cout << "------------------------------\n";
+		std::cout << "Connected via SOCI-ODBC!\n";
+		//std::cout << "Connection test result: " << testValue << "\n";
+		std::cout << "------------------------------";
+	}
+	catch (const soci::soci_error& e) {
+		std::cerr << "[Connection Error] " << e.what() << "\n";
+		throw; 
+	}
 }
 
 int App::run() {

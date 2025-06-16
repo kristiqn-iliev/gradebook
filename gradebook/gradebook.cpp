@@ -3,12 +3,18 @@
 #include <iostream>
 
 #include "./application.hpp"
-
+#include "./env_parser.hpp"
 
 int main()
 {
+	EnvParser env;
 
-	std::string connectionString = "DRIVER={ODBC Driver 17 for SQL Server};SERVER=DESKTOP-3KAPKMM;DATABASE=TestDB;UID=sa;PWD=sa;";
+	std::string connectionString =
+		"DRIVER=" + env.get("DRIVER") + ";" +
+		"SERVER=" + env.get("SERVER") + ";" +
+		"DATABASE=" + env.get("DATABASE") + ";" +
+		"UID=" + env.get("UID") + ";" +
+		"PWD=" + env.get("PWD");
 
 	try {
 		App app(connectionString);

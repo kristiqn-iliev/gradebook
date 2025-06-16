@@ -9,7 +9,7 @@ public:
 
 		sql
 			<< R"(
-				SELECT
+			SELECT
 				CAST(AVG(g.grade) AS DECIMAL(4,2)) AS average_grade
 			FROM grades AS g
 			JOIN students AS stud
@@ -31,7 +31,7 @@ public:
 
 		sql
 			<< R"(
-				SELECT
+			SELECT
 			  CAST(AVG(g.grade) AS DECIMAL(4,2)) AS average_grade
 			FROM students   AS s
 			RIGHT JOIN grades AS g
@@ -55,7 +55,7 @@ public:
 
 		soci::statement st = (sql.prepare
 			<< R"(
-				SELECT
+			SELECT
 				s.name,
 			  CAST(AVG(g.grade) AS DECIMAL(4,2)) AS average_grade
 			FROM students   AS s
